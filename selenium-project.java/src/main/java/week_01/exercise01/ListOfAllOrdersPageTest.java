@@ -12,10 +12,14 @@ public class ListOfAllOrdersPageTest {
         loginPage(driver);
         checkAllButtonTest(driver);
         System.out.println("-----------------------");
+        driver.quit();
 
         loginPage(driver);
         uncheckAllButtonTest(driver);
         System.out.println("-------------------------");
+        driver.quit();
+
+
 
 
 
@@ -38,16 +42,42 @@ public class ListOfAllOrdersPageTest {
     public static void checkAllButtonTest(WebDriver driver) throws InterruptedException {
         driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_btnCheckAll\"]")).click();
 
-        driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_btnDelete\"]")).click();
-        Thread.sleep(2000);
-
-        String actual = driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderMessage\"]")).getText();
-        if (actual.equals("List of orders is empty. In order to add new order use this link.")) {
-            System.out.println("Check All Button Test :  -- Passed --");
+        Thread.sleep(500);
+      if(areAllButtonsSelected(driver)){
+            System.out.println("-Check All- Button Test :  -- Passed --");
         } else {
-            System.out.println("Check All Button Test :  -- Fail --");
+            System.out.println("-Check All- Button Test :  -- Fail --");
         }
     }
+
+    public static boolean areAllButtonsSelected(WebDriver driver){
+        if(!driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl02_OrderSelector\"]")).isSelected()){
+            return false;
+        }
+        if(!driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl03_OrderSelector\"]")).isSelected()){
+            return false;
+        }
+        if(!driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl04_OrderSelector\"]")).isSelected()){
+            return false;
+        }
+        if(!driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl05_OrderSelector\"]")).isSelected()){
+            return false;
+        }
+        if(!driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl06_OrderSelector\"]")).isSelected()){
+            return false;
+        }
+        if(!driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl07_OrderSelector\"]")).isSelected()){
+            return false;
+        }
+        if(!driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl08_OrderSelector\"]")).isSelected()){
+            return false;
+        }
+        if(!driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl09_OrderSelector\"]")).isSelected()){
+            return false;
+        }
+        return true;
+    }
+
 
     public static void uncheckAllButtonTest(WebDriver driver) throws InterruptedException {
 
@@ -57,6 +87,42 @@ public class ListOfAllOrdersPageTest {
         Thread.sleep(2000);
 
         //Then uncheck All
+        driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_btnUncheckAll\"]")).click();
+        if(areAllButtonsUnchecked(driver)){
+            System.out.println("-Uncheck All- Button Test : -- Passed" );
+        }
+        else {
+            System.out.println("-Uncheck All- Button Test : -- Fail ");
+        }
 
     }
+
+    public static boolean areAllButtonsUnchecked(WebDriver driver){
+        if(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl02_OrderSelector\"]")).isSelected()){
+            return false;
+        }
+        if(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl03_OrderSelector\"]")).isSelected()){
+            return false;
+        }
+        if(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl04_OrderSelector\"]")).isSelected()){
+            return false;
+        }
+        if(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl05_OrderSelector\"]")).isSelected()){
+            return false;
+        }
+        if(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl06_OrderSelector\"]")).isSelected()){
+            return false;
+        }
+        if(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl07_OrderSelector\"]")).isSelected()){
+            return false;
+        }
+        if(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl08_OrderSelector\"]")).isSelected()){
+            return false;
+        }
+        if(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl09_OrderSelector\"]")).isSelected()){
+            return false;
+        }
+        return true;
+    }
+
 }
