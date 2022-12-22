@@ -25,11 +25,12 @@ public class ListOfAllOrdersPageTest {
         loginPage(driver);
         deleteButtonTest(driver);
         System.out.println("------------------------");
-        driver.quit();
 
 
         //edit button
-
+        editButtonTest(driver);
+        System.out.println("------------------");
+        driver.quit();
 
     }
 
@@ -130,6 +131,22 @@ public class ListOfAllOrdersPageTest {
         }
 
         return false;
+    }
+
+    public static void editButtonTest(WebDriver driver) throws InterruptedException {
+        //get the name that is in the line
+        String editedName = driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid\"]/tbody/tr[5]/td[2]")).getText();
+        //click edit button
+        driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid\"]/tbody/tr[5]/td[13]/input")).click();
+        Thread.sleep(2000);
+        //check that name in this page
+        String editPageName = driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_txtName\"]")).getAttribute("value");
+
+        if(editedName.equals(editPageName)){
+            System.out.println("Edit Button Test : -- Passed --");
+        }else {
+            System.out.println("Edit Button Test : -- Fail --");
+        }
     }
 
 }
