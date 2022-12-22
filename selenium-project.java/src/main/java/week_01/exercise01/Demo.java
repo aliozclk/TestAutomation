@@ -18,6 +18,8 @@ public class Demo {
         System.out.println(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl02_OrderSelector\"]")).isSelected());
         Thread.sleep(2000);
 
+
+        loginPage(driver);
         driver.quit();
     }
 }

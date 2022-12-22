@@ -12,15 +12,23 @@ public class ListOfAllOrdersPageTest {
         loginPage(driver);
         checkAllButtonTest(driver);
         System.out.println("-----------------------");
-        driver.quit();
+
+        Thread.sleep(500);
+
 
         loginPage(driver);
         uncheckAllButtonTest(driver);
         System.out.println("-------------------------");
+        driver.manage().window().maximize();
+
+        //delete button
+        loginPage(driver);
+        deleteButtonTest(driver);
+        System.out.println("------------------------");
         driver.quit();
 
 
-
+        //edit button
 
 
     }
@@ -43,38 +51,22 @@ public class ListOfAllOrdersPageTest {
         driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_btnCheckAll\"]")).click();
 
         Thread.sleep(500);
-      if(areAllButtonsSelected(driver)){
+        if (areAllButtonsSelected(driver)) {
             System.out.println("-Check All- Button Test :  -- Passed --");
         } else {
             System.out.println("-Check All- Button Test :  -- Fail --");
         }
     }
 
-    public static boolean areAllButtonsSelected(WebDriver driver){
-        if(!driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl02_OrderSelector\"]")).isSelected()){
-            return false;
+    public static boolean areAllButtonsSelected(WebDriver driver) {
+        for (int i = 2; i < 10; i++) {
+            String xPathOfCheckBox = "//*[@id=\"ctl00_MainContent_orderGrid_ctl0" + i + "_OrderSelector\"]";
+
+            if (!driver.findElement(By.xpath(xPathOfCheckBox)).isSelected()) {
+                return false;
+            }
         }
-        if(!driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl03_OrderSelector\"]")).isSelected()){
-            return false;
-        }
-        if(!driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl04_OrderSelector\"]")).isSelected()){
-            return false;
-        }
-        if(!driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl05_OrderSelector\"]")).isSelected()){
-            return false;
-        }
-        if(!driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl06_OrderSelector\"]")).isSelected()){
-            return false;
-        }
-        if(!driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl07_OrderSelector\"]")).isSelected()){
-            return false;
-        }
-        if(!driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl08_OrderSelector\"]")).isSelected()){
-            return false;
-        }
-        if(!driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl09_OrderSelector\"]")).isSelected()){
-            return false;
-        }
+
         return true;
     }
 
@@ -88,41 +80,56 @@ public class ListOfAllOrdersPageTest {
 
         //Then uncheck All
         driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_btnUncheckAll\"]")).click();
-        if(areAllButtonsUnchecked(driver)){
-            System.out.println("-Uncheck All- Button Test : -- Passed" );
-        }
-        else {
+        if (areAllButtonsUnchecked(driver)) {
+            System.out.println("-Uncheck All- Button Test : -- Passed");
+        } else {
             System.out.println("-Uncheck All- Button Test : -- Fail ");
         }
 
     }
 
-    public static boolean areAllButtonsUnchecked(WebDriver driver){
-        if(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl02_OrderSelector\"]")).isSelected()){
-            return false;
+    public static boolean areAllButtonsUnchecked(WebDriver driver) {
+        for (int i = 2; i < 10; i++) {
+            String xPathOfCheckBox = "//*[@id=\"ctl00_MainContent_orderGrid_ctl0" + i + "_OrderSelector\"]";
+
+            if (driver.findElement(By.xpath(xPathOfCheckBox)).isSelected()) {
+                return false;
+            }
         }
-        if(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl03_OrderSelector\"]")).isSelected()){
-            return false;
-        }
-        if(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl04_OrderSelector\"]")).isSelected()){
-            return false;
-        }
-        if(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl05_OrderSelector\"]")).isSelected()){
-            return false;
-        }
-        if(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl06_OrderSelector\"]")).isSelected()){
-            return false;
-        }
-        if(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl07_OrderSelector\"]")).isSelected()){
-            return false;
-        }
-        if(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl08_OrderSelector\"]")).isSelected()){
-            return false;
-        }
-        if(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl09_OrderSelector\"]")).isSelected()){
-            return false;
-        }
+
         return true;
+    }
+
+    public static void deleteButtonTest(WebDriver driver){
+        //select a checkbox
+        driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid_ctl02_OrderSelector\"]")).click();
+
+        //get the name
+        String nameOnDeletedLine = driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid\"]/tbody/tr[2]/td[2]")).getText();
+
+        //click delete button
+        driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_btnDelete\"]")).click();
+        //deleted name exists or not
+        if(doesTheNameExist(driver,nameOnDeletedLine)){
+            System.out.println("--Delete Button Test -- : -- Fail --");
+        }
+        else {
+            System.out.println("--Delete Button Test -- : -- Passed --");
+        }
+    }
+
+    public static boolean doesTheNameExist(WebDriver driver,String name){
+
+        for (int i = 2; i < 9; i++) {
+
+            String xpathOfName = "//*[@id=\"ctl00_MainContent_orderGrid\"]/tbody/tr[" + i +  "]/td[2]";
+            if(driver.findElement(By.xpath(xpathOfName)).getText().equals(name)){
+                return true;
+            }
+
+        }
+
+        return false;
     }
 
 }
