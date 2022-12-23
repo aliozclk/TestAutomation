@@ -3,6 +3,7 @@ package week_01.exercise01;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 
 public class ListOfAllOrdersPageTest {
     public static void main(String[] args) throws InterruptedException {
@@ -30,7 +31,18 @@ public class ListOfAllOrdersPageTest {
         //edit button
         editButtonTest(driver);
         System.out.println("------------------");
+
+        //update button
+        loginPage(driver);
+        updateButtonTest(driver);
+        System.out.println("-------------------------");
         driver.quit();
+
+
+
+
+
+
 
     }
 
@@ -147,6 +159,32 @@ public class ListOfAllOrdersPageTest {
         }else {
             System.out.println("Edit Button Test : -- Fail --");
         }
+    }
+
+    public static void updateButtonTest(WebDriver driver) throws InterruptedException {
+        //click on edit button
+        driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_orderGrid\"]/tbody/tr[3]/td[13]/input")).click();
+        Thread.sleep(500);
+
+        //change the name
+        driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_txtName\"]")).clear();
+        String name = "Ali Özçelik";
+        driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_txtName\"]")).sendKeys(name);
+        //click on card type
+        driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_cardList_1\"]")).click();
+         // click on update button
+        driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_UpdateButton\"]")).click();
+        // return to the order page
+        driver.findElement(By.xpath("//*[@id=\"ctl00_menu\"]/li[1]/a")).click();
+        Thread.sleep(500);
+        //check that name if changed or not
+        if(doesTheNameExist(driver,name)){
+            System.out.println("Update Button Test : -- Passed --");
+        }else {
+            System.out.println("Update Button Test : -- Fail --");
+        }
+
+
     }
 
 }
