@@ -27,9 +27,12 @@ public class OrderPageTest {
 
         //Give a string into the zip line
         invalidFormatInZipBoxTest(driver);
-        driver.quit();
+
 
         //Give a string into the card number line
+        invalidFormatInCardNumberBox(driver);
+        driver.quit();
+
 
         //Process Button Test
 
@@ -140,6 +143,23 @@ public class OrderPageTest {
         }
         else {
             System.out.println("Invalid Format in Zip Box Test : -- Failed --");
+        }
+
+    }
+
+    private static void invalidFormatInCardNumberBox(WebDriver driver) throws InterruptedException {
+        //give a string in card number box
+        driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_TextBox6\"]")).sendKeys("string");
+        //click on process
+        driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_InsertButton\"]")).click();
+        Thread.sleep(500);
+        //check warning message
+        String warning = driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_RegularExpressionValidator2\"]")).getText();
+        if(warning.equals("Invalid format. Only digits allowed.")){
+            System.out.println("Invalid Format Warning In Card Box Test : -- Passed --");
+        }
+        else {
+            System.out.println("Invalid Format Warning In Card Box Test : -- Failed --");
         }
 
     }
