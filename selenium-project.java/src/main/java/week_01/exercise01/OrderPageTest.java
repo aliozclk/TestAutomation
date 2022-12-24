@@ -1,15 +1,15 @@
 package week_01.exercise01;
 
-import org.checkerframework.checker.units.qual.Time;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.concurrent.TimeUnit;
 
 public class OrderPageTest {
     public static void main(String[] args) throws InterruptedException {
@@ -17,31 +17,33 @@ public class OrderPageTest {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\alioz\\Downloads\\chromedriver_win32\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
 
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
         //login to page
         loginPage(driver);
 
 
-        //Product Dropdown Test
+        //1-Product Dropdown Test
         productDropdownTest(driver);
 
-        //Calculate Button Test
+        //2-Calculate Button Test
         calculateButtonTest(driver);
 
-        //Address Info : With Missing Infos
+        //3-Address Info : With Missing Infos
         addressInfoBoxWithMissingLines(driver);
 
 
-        //Give a string into the zip line
+        //4-Give a string into the zip line
         invalidFormatInZipBoxTest(driver);
 
 
-        //Give a string into the card number line
+        //5-Give a string into the card number line
         invalidFormatInCardNumberBox(driver);
 
-        //Invalid Card Date
+        //6-Invalid Card Date
         invalidCardDateTest(driver);
 
-        //Process Button Test
+        //7-Process Button Test
         processButtonTest(driver);
         driver.quit();
 
@@ -53,13 +55,11 @@ public class OrderPageTest {
         String password = "test";
 
         driver.get("http://secure.smartbearsoftware.com/samples/TestComplete12/WebOrders/Login.aspx?ReturnUrl=%2fsamples%2fTestComplete12%2fWebOrders%2fDefault.aspx");
-        Thread.sleep(500);
 
         driver.findElement(By.xpath("//*[@id='ctl00_MainContent_username']")).sendKeys(username);
         driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_password\"]")).sendKeys(password);
         driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_login_button\"]")).click();
 
-        Thread.sleep(2000);
     }
 
     public static void productDropdownTest(WebDriver driver) throws InterruptedException {
@@ -68,16 +68,15 @@ public class OrderPageTest {
 
         //Order Page
         driver.findElement(By.xpath("//*[@id=\"ctl00_menu\"]/li[3]/a")).click();
-        Thread.sleep(500);
 
         Select dropdown = new Select(driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_ddlProduct\"]")));
         //My Money -- 100
         String number = "";
         for (int i = 0; i < 3; i++) {
             dropdown.selectByIndex(i);
-            number = driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_txtUnitPrice\"]")).getAttribute("value");
+            number = driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_txtUnitPrice\"]"))
+                    .getAttribute("value");
             result = result && number.equals(prices[i]);
-            Thread.sleep(1000);
         }
 
         if (result) {
@@ -115,11 +114,12 @@ public class OrderPageTest {
     public static void addressInfoBoxWithMissingLines(WebDriver driver) throws InterruptedException {
         //fill the quantity box
         driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_txtQuantity\"]")).clear();
-        driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_txtQuantity\"]")).sendKeys("5");
-        Thread.sleep(500);
+        WebElement quantityBox = driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_txtQuantity\"]"));
+        quantityBox.sendKeys("5");
+
         //click on process to see warnings
         driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_InsertButton\"]")).click();
-        Thread.sleep(500);
+
 
         //check warnings
         String warning = "";
@@ -139,10 +139,10 @@ public class OrderPageTest {
     public static void invalidFormatInZipBoxTest(WebDriver driver) throws InterruptedException {
         //give a string in zip line
         driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_TextBox5\"]")).sendKeys("String");
-        Thread.sleep(1000);
+
         //click on process
         driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_InsertButton\"]")).click();
-        Thread.sleep(500);
+
 
 
         //check that warning
@@ -160,7 +160,7 @@ public class OrderPageTest {
         driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_TextBox6\"]")).sendKeys("string");
         //click on process
         driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_InsertButton\"]")).click();
-        Thread.sleep(500);
+
         //check warning message
         String warning = driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_RegularExpressionValidator2\"]")).getText();
         if (warning.equals("Invalid format. Only digits allowed.")) {
@@ -179,13 +179,13 @@ public class OrderPageTest {
         driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_TextBox1\"]")).sendKeys("13/24");
         //click on process button
         driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_InsertButton\"]")).click();
-        Thread.sleep(500);
+
 
         //check : is there a warning?
         String warning = driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_RegularExpressionValidator3\"]")).getText();
-        if(warning.isEmpty()){
+        if (warning.isEmpty()) {
             System.out.println("Invalid Expire Date (ex:13th month) :-- Failed --");
-        }else {
+        } else {
             System.out.println("Invalid Expire Date (ex:13th month) :-- Passed --");
         }
 

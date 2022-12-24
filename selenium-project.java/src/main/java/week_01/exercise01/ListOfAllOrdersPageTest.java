@@ -5,34 +5,39 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
+import java.util.concurrent.TimeUnit;
+
 public class ListOfAllOrdersPageTest {
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\alioz\\Downloads\\chromedriver_win32\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
 
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+        //1-check all button test
         loginPage(driver);
         checkAllButtonTest(driver);
         System.out.println("-----------------------");
 
-        Thread.sleep(500);
 
 
+        //2-uncheck all test
         loginPage(driver);
         uncheckAllButtonTest(driver);
         System.out.println("-------------------------");
         driver.manage().window().maximize();
 
-        //delete button
+        //3-delete button
         loginPage(driver);
         deleteButtonTest(driver);
         System.out.println("------------------------");
 
 
-        //edit button
+        //4-edit button
         editButtonTest(driver);
         System.out.println("------------------");
 
-        //update button
+        //5-update button
         loginPage(driver);
         updateButtonTest(driver);
         System.out.println("-------------------------");
@@ -61,9 +66,10 @@ public class ListOfAllOrdersPageTest {
     }
 
     public static void checkAllButtonTest(WebDriver driver) throws InterruptedException {
-        driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_btnCheckAll\"]")).click();
+        //driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_btnCheckAll\"]")).click();
+        driver.findElement(By.id("ctl00_MainContent_btnCheckAll")).click();
 
-        Thread.sleep(500);
+
         if (areAllButtonsSelected(driver)) {
             System.out.println("-Check All- Button Test :  -- Passed --");
         } else {
