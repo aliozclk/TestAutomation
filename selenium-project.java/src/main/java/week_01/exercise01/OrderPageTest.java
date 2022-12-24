@@ -40,15 +40,13 @@ public class OrderPageTest {
 
         //Invalid Card Date
         invalidCardDateTest(driver);
-        driver.quit();
-
 
         //Process Button Test
         processButtonTest(driver);
+        driver.quit();
 
 
     }
-
 
     public static void loginPage(WebDriver driver) throws InterruptedException {
         String username = "Tester";
@@ -169,6 +167,26 @@ public class OrderPageTest {
             System.out.println("Invalid Format Warning In Card Box Test : -- Passed --");
         } else {
             System.out.println("Invalid Format Warning In Card Box Test : -- Failed --");
+        }
+
+    }
+
+    private static void invalidCardDateTest(WebDriver driver) throws InterruptedException {
+        //the last month is 12th
+        //so 12 is valid for month
+        //try to give 13th
+        //it must be invalid --> 13/24
+        driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_TextBox1\"]")).sendKeys("13/24");
+        //click on process button
+        driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_InsertButton\"]")).click();
+        Thread.sleep(500);
+
+        //check : is there a warning?
+        String warning = driver.findElement(By.xpath("//*[@id=\"ctl00_MainContent_fmwOrder_RegularExpressionValidator3\"]")).getText();
+        if(warning.isEmpty()){
+            System.out.println("Invalid Expire Date (ex:13th month) :-- Failed --");
+        }else {
+            System.out.println("Invalid Expire Date (ex:13th month) :-- Passed --");
         }
 
     }
