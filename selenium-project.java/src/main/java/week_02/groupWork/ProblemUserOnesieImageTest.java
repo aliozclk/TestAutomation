@@ -7,7 +7,7 @@ import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
 
-public class ProblemUserPageBikeImage {
+public class ProblemUserOnesieImageTest {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\alioz\\Downloads\\chromedriver_win32\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
@@ -21,10 +21,10 @@ public class ProblemUserPageBikeImage {
         driver.findElement(By.id("login-button")).click();
 
         //get image source
-        String imageSourceOnInventoryPage = driver.findElement(By.xpath("//*[@id=\"item_0_img_link\"]/img")).getAttribute("src");
+        String imageSourceOnInventoryPage = driver.findElement(By.xpath("//*[@id=\"item_2_img_link\"]/img")).getAttribute("src");
 
         //click on image
-        driver.findElement(By.xpath("//*[@id=\"item_0_img_link\"]/img")).click();
+        driver.findElement(By.xpath("//*[@id=\"item_2_img_link\"]/img")).click();
 
         //check image sources of same product
         String imageSourceOnProductPage = driver.findElement(By.xpath("//*[@id=\"inventory_item_container\"]/div/div/div[1]/img")).getAttribute("src");
@@ -32,7 +32,6 @@ public class ProblemUserPageBikeImage {
         Assert.assertEquals(imageSourceOnInventoryPage,imageSourceOnProductPage);
 
         driver.quit();
-
 
     }
 }

@@ -21,10 +21,10 @@ public class ProblemUserPageBoltTshirtImageTest {
         driver.findElement(By.id("login-button")).click();
 
         //get image source
-        String imageSourceOnInventoryPage = driver.findElement(By.xpath("//*[@id=\"item_4_img_link\"]/img")).getAttribute("src");
+        String imageSourceOnInventoryPage = driver.findElement(By.xpath("//*[@id=\"item_1_img_link\"]/img")).getAttribute("src");
 
         //click on image
-        driver.findElement(By.xpath("//*[@id=\"item_4_img_link\"]/img")).click();
+        driver.findElement(By.xpath("//*[@id=\"item_1_img_link\"]/img")).click();
 
         //check image sources of same product
         String imageSourceOnProductPage = driver.findElement(By.xpath("//*[@id=\"inventory_item_container\"]/div/div/div[1]/img")).getAttribute("src");
