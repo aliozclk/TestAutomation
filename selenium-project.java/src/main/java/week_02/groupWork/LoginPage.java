@@ -15,7 +15,7 @@ public class LoginPage {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 
 
-        String[][] loginInfos = {{"fatih","kara"},{"furkan","sener"},{"ali","özçelik"}};
+
 
         //login with true infos
         driver.get("https://www.saucedemo.com/");
@@ -25,6 +25,8 @@ public class LoginPage {
 
         Assert.assertEquals(driver.getCurrentUrl(),"https://www.saucedemo.com/inventory.html");
 
+        //fake users
+        String[][] loginInfos = {{"fatih","kara"},{"furkan","sener"},{"ali","özçelik"}};
         for (int i = 0; i < 3; i++) {
             driver.get("https://www.saucedemo.com/");
             driver.findElement(By.id("user-name")).sendKeys(loginInfos[i][0]);
