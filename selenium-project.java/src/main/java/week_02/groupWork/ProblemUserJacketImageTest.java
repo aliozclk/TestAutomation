@@ -20,16 +20,14 @@ public class ProblemUserJacketImageTest {
         driver.findElement(By.id("password")).sendKeys("secret_sauce");
         driver.findElement(By.id("login-button")).click();
 
-        //get image source
-        String imageSourceOnInventoryPage = driver.findElement(By.xpath("//*[@id=\"item_5_img_link\"]/img")).getAttribute("src");
 
         //click on image
         driver.findElement(By.xpath("//*[@id=\"item_5_img_link\"]/img")).click();
 
-        //check image sources of same product
+        //check image source on product page
         String imageSourceOnProductPage = driver.findElement(By.xpath("//*[@id=\"inventory_item_container\"]/div/div/div[1]/img")).getAttribute("src");
 
-        Assert.assertEquals(imageSourceOnInventoryPage,imageSourceOnProductPage);
+        Assert.assertTrue(imageSourceOnProductPage.contains("pullover"));
 
         driver.quit();
 
