@@ -20,8 +20,6 @@ public class ProblemUserPageBackPackImageTest {
         driver.findElement(By.id("password")).sendKeys("secret_sauce");
         driver.findElement(By.id("login-button")).click();
 
-        //get image source
-        String imageSourceOnInventoryPage = driver.findElement(By.xpath("//*[@id=\"item_4_img_link\"]/img")).getAttribute("src");
 
         //click on image
         driver.findElement(By.xpath("//*[@id=\"item_4_img_link\"]/img")).click();
@@ -29,7 +27,7 @@ public class ProblemUserPageBackPackImageTest {
         //check image sources of same product
         String imageSourceOnProductPage = driver.findElement(By.xpath("//*[@id=\"inventory_item_container\"]/div/div/div[1]/img")).getAttribute("src");
 
-        Assert.assertEquals(imageSourceOnInventoryPage,imageSourceOnProductPage);
+        Assert.assertTrue(imageSourceOnProductPage.contains("backpack"));
 
         driver.quit();
 
