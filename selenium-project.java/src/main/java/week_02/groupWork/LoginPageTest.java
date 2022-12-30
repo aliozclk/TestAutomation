@@ -7,7 +7,7 @@ import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
 
-public class LoginPage {
+public class LoginPageTest {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\alioz\\Downloads\\chromedriver_win32\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();

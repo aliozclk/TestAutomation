@@ -41,6 +41,6 @@ public class ProblemUserJacketAddToCartAndRemoveButtonTest {
         Assert.assertEquals(textOnButton,"ADD TO CART");
 
 
-        driver.quit();
+        //driver.quit();
     }
 }
