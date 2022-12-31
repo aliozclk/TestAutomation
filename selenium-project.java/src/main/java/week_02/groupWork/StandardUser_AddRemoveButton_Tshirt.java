@@ -1,4 +1,4 @@
-package homework_02;
+package week_02.groupWork;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

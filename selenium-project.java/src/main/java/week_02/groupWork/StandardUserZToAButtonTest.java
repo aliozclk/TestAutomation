@@ -1,4 +1,4 @@
-package Week_02.SaucedemoWebPage.ProductsPage;
+package week_02.groupWork;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

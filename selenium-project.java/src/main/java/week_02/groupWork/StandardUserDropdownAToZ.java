@@ -1,4 +1,4 @@
-package Automation_02.GroupWork;
+package week_02.groupWork;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
