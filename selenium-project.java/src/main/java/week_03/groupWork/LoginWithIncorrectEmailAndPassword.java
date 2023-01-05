@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class LoginWithIncorrectEmailAndPassword {
@@ -25,7 +26,7 @@ public class LoginWithIncorrectEmailAndPassword {
     public void setUpSuite() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
     @BeforeTest
