@@ -35,6 +35,7 @@ public class LoginWithIncorrectEmailAndPassword {
 
         //Launch Browser and Navigate to the URL
         driver.get("https://automationexercise.com/");
+        driver.manage().window().maximize();
 
     }
 

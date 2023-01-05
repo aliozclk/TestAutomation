@@ -25,22 +25,115 @@ td,th {border:1px solid #009;padding:.25em .5em}
 <body>
 <table cellspacing="0" cellpadding="0" class="testOverview">
 <tr><th>Test</th><th>Methods<br/>Passed</th><th>Scenarios<br/>Passed</th><th># skipped</th><th># failed</th><th>Total<br/>Time</th><th>Included<br/>Groups</th><th>Excluded<br/>Groups</th></tr>
-<tr><td style="text-align:left;padding-right:2em"><a href="#t1">C:/Users/alioz/Desktop/workspace/InarAcademy/TestAutomation/selenium-project.java/src/test/java/week03/groupwork/LoginWithIncorrectEmailAndPassword.java</a></td><td class="numi">5</td><td class="numi">5</td><td class="numi">0</td><td class="numi">0</td><td class="numi">8.8 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+<tr><td style="text-align:left;padding-right:2em"><a href="#t1">C:/Users/alioz/Desktop/workspace/InarAcademy/TestAutomation/selenium-project.java/src/test/java/week03/groupwork/VerifySubscriptionInCartPage.java</a></td><td class="numi">3</td><td class="numi">3</td><td class="numi">0</td><td class="numi_attn">2</td><td class="numi">7.1 seconds</td><td class="numi"></td><td class="numi"></td></tr>
 </table>
 <table cellspacing="0" cellpadding="0" class="methodOverview" id="summary">
 <tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Start</th><th>Time<br/>(ms)</th></tr>
-<tr id="t1"><th colspan="5">C:/Users/alioz/Desktop/workspace/InarAcademy/TestAutomation/selenium-project.java/src/test/java/week03/groupwork/LoginWithIncorrectEmailAndPassword.java &#8212; passed</th></tr>
-<tr class="passedodd"><td rowspan="5">week03.groupwork.LoginWithIncorrectEmailAndPassword</td><td><a href="#m1"><b>verifyHomePageIsVisible</b>  </a></td><td class="numi">1</td><td>1672942931221</td><td class="numi">10</td></tr><tr class="passedodd"><td><a href="#m2"><b>verifySignUpLoginPage</b>  </a></td><td class="numi">1</td><td>1672942931233</td><td class="numi">1303</td></tr><tr class="passedodd"><td><a href="#m3"><b>verifyLoginText</b>  </a></td><td class="numi">1</td><td>1672942932537</td><td class="numi">154</td></tr><tr class="passedodd"><td><a href="#m4"><b>loginWithIncorrectEmailAndPassword</b>  </a></td><td class="numi">1</td><td>1672942932691</td><td class="numi">1808</td></tr><tr class="passedodd"><td><a href="#m5"><b>verifyErrorMessage</b>  </a></td><td class="numi">1</td><td>1672942934499</td><td class="numi">2038</td></tr>
+<tr id="t1"><th colspan="5">C:/Users/alioz/Desktop/workspace/InarAcademy/TestAutomation/selenium-project.java/src/test/java/week03/groupwork/VerifySubscriptionInCartPage.java &#8212; failed</th></tr>
+<tr class="failedodd"><td rowspan="2">week03.groupwork.VerifySubscriptionInCartPage</td><td><a href="#m1"><b>clickOnTestCasesButton</b>  </a></td><td class="numi">1</td><td>1672951479410</td><td class="numi">3031</td></tr><tr class="failedodd"><td><a href="#m2"><b>verifySubscription</b>  </a></td><td class="numi">1</td><td>1672951482446</td><td class="numi">41</td></tr>
+<tr><th colspan="5">C:/Users/alioz/Desktop/workspace/InarAcademy/TestAutomation/selenium-project.java/src/test/java/week03/groupwork/VerifySubscriptionInCartPage.java &#8212; passed</th></tr>
+<tr class="passedodd"><td rowspan="3">week03.groupwork.VerifySubscriptionInCartPage</td><td><a href="#m3"><b>verifyHomePageIsVisible</b>  </a></td><td class="numi">1</td><td>1672951479398</td><td class="numi">8</td></tr><tr class="passedodd"><td><a href="#m4"><b>enterEmailAndClickArrowButton</b>  </a></td><td class="numi">1</td><td>1672951482489</td><td class="numi">149</td></tr><tr class="passedodd"><td><a href="#m5"><b>verifySuccessMessage</b>  </a></td><td class="numi">1</td><td>1672951482638</td><td class="numi">68</td></tr>
 </table>
-<h1>C:/Users/alioz/Desktop/workspace/InarAcademy/TestAutomation/selenium-project.java/src/test/java/week03/groupwork/LoginWithIncorrectEmailAndPassword.java</h1>
-<h2 id="m1">week03.groupwork.LoginWithIncorrectEmailAndPassword:verifySignUpLoginPage</h2>
+<h1>C:/Users/alioz/Desktop/workspace/InarAcademy/TestAutomation/selenium-project.java/src/test/java/week03/groupwork/VerifySubscriptionInCartPage.java</h1>
+<h2 id="m1">week03.groupwork.VerifySubscriptionInCartPage:verifySubscription</h2>
+<div>
+<div class="stacktrace">java.lang.AssertionError: did not expect to find [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:97)
+	at org.testng.Assert.failNotEquals(Assert.java:969)
+	at org.testng.Assert.assertTrue(Assert.java:43)
+	at org.testng.Assert.assertTrue(Assert.java:53)
+	at week03.groupwork.VerifySubscriptionInCartPage.verifySubscription(VerifySubscriptionInCartPage.java:66)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:584)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at org.testng.TestRunner.privateRun(TestRunner.java:770)
+	at org.testng.TestRunner.run(TestRunner.java:591)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:304)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1102)
+	at org.testng.TestNG.runSuites(TestNG.java:1032)
+	at org.testng.TestNG.run(TestNG.java:1000)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:109)
+</div>
+</div>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m2">week03.groupwork.LoginWithIncorrectEmailAndPassword:verifyLoginText</h2>
+<h2 id="m2">week03.groupwork.VerifySubscriptionInCartPage:clickOnTestCasesButton</h2>
+<div>
+<div class="stacktrace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//li[3]/a[@xpath=&apos;1&apos;]&quot;}
+  (Session info: chrome=108.0.5359.125)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: &apos;4.0.0&apos;, revision: &apos;3a21814679&apos;
+System info: host: &apos;MATEBOOKD15&apos;, ip: &apos;192.168.1.15&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_333&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [64c067466a7ae2853c88c1c51e73fb66, findElement {using=xpath, value=//li[3]/a[@xpath=&apos;1&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 108.0.5359.125, chrome: {chromedriverVersion: 108.0.5359.71 (1e0e3868ee06..., userDataDir: C:\Users\alioz\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:64831}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:64831/devtoo..., se:cdpVersion: 108.0.5359.125, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 64c067466a7ae2853c88c1c51e73fb66
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:164)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:139)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:559)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:383)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:375)
+	at week03.groupwork.VerifySubscriptionInCartPage.clickOnTestCasesButton(VerifySubscriptionInCartPage.java:52)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:584)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.util.ArrayList.forEach(ArrayList.java:1259)
+	at org.testng.TestRunner.privateRun(TestRunner.java:770)
+	at org.testng.TestRunner.run(TestRunner.java:591)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:304)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1102)
+	at org.testng.TestNG.runSuites(TestNG.java:1032)
+	at org.testng.TestNG.run(TestNG.java:1000)
+	at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+	at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:109)
+</div>
+</div>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m3">week03.groupwork.LoginWithIncorrectEmailAndPassword:verifyErrorMessage</h2>
+<h2 id="m3">week03.groupwork.VerifySubscriptionInCartPage:enterEmailAndClickArrowButton</h2>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m4">week03.groupwork.LoginWithIncorrectEmailAndPassword:loginWithIncorrectEmailAndPassword</h2>
+<h2 id="m4">week03.groupwork.VerifySubscriptionInCartPage:verifySuccessMessage</h2>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m5">week03.groupwork.LoginWithIncorrectEmailAndPassword:verifyHomePageIsVisible</h2>
+<h2 id="m5">week03.groupwork.VerifySubscriptionInCartPage:verifyHomePageIsVisible</h2>
 <p class="totop"><a href="#summary">back to summary</a></p>
 </body></html>

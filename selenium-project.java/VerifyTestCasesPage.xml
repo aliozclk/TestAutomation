@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/alioz/Desktop/workspace/InarAcademy/TestAutomation/selenium-project.java/src/test/java/week03/groupwork/VerifyTestCasesPage.java"><classes><class name="week03.groupwork.VerifyTestCasesPage"><methods><include name="verifyHomePageIsVisible"/><include name="clickOnTestCasesButton"/><include name="verifyNavigationOfTestCasesPage"/></methods></class></classes></test></suite>
