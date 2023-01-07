@@ -2,6 +2,7 @@ package week03.groupwork;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -65,7 +66,7 @@ public class RegisterBeforeCheckoutTest {
         WebElement name = driver.findElement(By.xpath("//input[@data-qa='signup-name']"));
         name.sendKeys("Name Surname");
         WebElement email = driver.findElement(By.xpath("//input[@data-qa='signup-email']"));
-        email.sendKeys("name@email.com");
+        email.sendKeys("name2@email.com");
         WebElement signupButton = driver.findElement(By.xpath("//button[@data-qa='signup-button']"));
         signupButton.click();
 
@@ -79,7 +80,7 @@ public class RegisterBeforeCheckoutTest {
 
         Select dropdown = new Select(driver.findElement(By.id("country")));
         String country = "United States";
-        dropdown.deselectByVisibleText(country);
+        dropdown.selectByVisibleText(country);
 
         WebElement addressBox = driver.findElement(By.id("address1"));
         WebElement stateBox = driver.findElement(By.id("state"));
@@ -93,6 +94,9 @@ public class RegisterBeforeCheckoutTest {
         zipcodeBox.sendKeys("123456");
         numberBox.sendKeys("123456789");
 
+        JavascriptExecutor js= (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,600)");
+
         WebElement createAccountBtn = driver.findElement(By.xpath("//button[@data-qa='create-account']"));
         createAccountBtn.click();
 
@@ -105,6 +109,7 @@ public class RegisterBeforeCheckoutTest {
 
         WebElement continueBtn = driver.findElement(By.xpath("//a[@class='btn btn-primary']"));
         continueBtn.click();
+
 
 
     }
